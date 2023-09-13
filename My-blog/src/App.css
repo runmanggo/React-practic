@@ -1,0 +1,38 @@
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+.App {
+  display: flex;
+  font-family: Pretendard-Regular;
+  flex-direction: column;
+  color: #242424;
+}
+.Header {
+  position: relative;
+}
+
+.Main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.Modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.HeartBox {
+  display: flex;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
