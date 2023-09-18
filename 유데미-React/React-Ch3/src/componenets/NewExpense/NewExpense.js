@@ -1,20 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import "./NewExpense.css";
 import ExpenseForm from "./ExpenseForm";
 
 function NewExpense(props) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const saveExpenseDataHandler = (enteredExpenseData) => {
     const expenseData = {
       ...enteredExpenseData,
       id: Math.random().toString(),
     };
     props.onAddExpense(expenseData);
+    setIsModalOpen(false);
   };
+
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
+  const closeExpenseForm = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <div className="new-expense">
-      <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />
-      {/**ExpenseForm 컴포넌트에 onSaveExpenseData
-       * prop으로 saveExpenseDataHandler 함수를 전달*/}
+      {isModalOpen && (
+        <ExpenseForm
+          onSaveExpenseData={saveExpenseDataHandler}
+          onCancel={closeExpenseForm}
+        />
+      )}
+      {!isModalOpen && <button onClick={toggleModal}>Add New Expense</button>}
     </div>
   );
 }
