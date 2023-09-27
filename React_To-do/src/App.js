@@ -1,14 +1,15 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import ToDoInput from "./components/ToDoInput";
 import TodoList from "./components/TodoList";
 
 function App() {
   const [list, setList] = useState([]);
+  const nextId = useRef(0); // 내가 써봄!
 
   const changeList = (todo) => {
     setList((prevList) => {
-      return [{ content: todo, id: Math.random().toString }, ...prevList];
+      return [{ content: todo, id: (nextId.current += 1) }, ...prevList];
     });
   };
 
