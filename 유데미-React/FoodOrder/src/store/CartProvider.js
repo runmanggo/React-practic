@@ -59,7 +59,11 @@ const cartReducer = (state, action) => {
       const updatedItem = { ...existingItem, amount: existingItem.amount - 1 };
       updatedItems = [...state.items];
       updatedItems[existingCartItemIndex] = updatedItem;
+      //해당 인덱스 위치에 업데이트된 항목 객체를 대입함으로써 해당 항목만 업데이트
     }
+    /**
+     * 장바구니에 있는 특정 아이템의 수량(amount)이 1일 때, 즉 그 아이템을 완전히 제거해야 할 때의 로직
+     */
 
     return {
       items: updatedItems,
