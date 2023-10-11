@@ -18,3 +18,5 @@ export default function RecipeList() {
     </div>
   );
 }
+
+// 맵충접 싫음 컴포넌트 분리하기
