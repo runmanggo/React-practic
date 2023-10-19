@@ -63,7 +63,16 @@ function App() {
   useEffect(() => {
     console.log("실행중");
     fetchMoviesHandler();
-  }, [fetchMoviesHandler]);
+  }, [fetchMoviesHandler]); 
+
+  /**
+   * 이것은 일반적으로 useEffect의 종속성 배열에 함수를 직접 추가하면 
+   * 해당 함수가 변경될 때마다 useEffect가 실행되기 때문입니다
+   * 
+   * useCallback을 사용하면 함수를 캐시하여 동일한 함수 참조를 계속 사용하므로 
+   * 종속성 배열에 useCallback에서 반환한 함수를 추가하면 해당 함수가 변경될 때에만
+   *  useEffect가 실행됩니다
+   */
 
   return (
     <React.Fragment>
