@@ -4,6 +4,7 @@ import { useState } from 'react';
 import DataView from './components/DataView/DataView';
 import TextInput from './components/TextInput/TextInput';
 import Button from './components/Button/Button';
+import ToDoListContextProvider from '../src/context/context';
 
 const Container = styled.div`
   height: 100vh;
@@ -15,24 +16,13 @@ const Container = styled.div`
 `;
 
 function App() {
-  const [toDoList, setToDoList] = useState(['할 일 1', '할 일 2', '할 일 3']);
-  const [toDo, setTodo] = useState('');
-
-  const handleClick = (event: any) => {
-    setTodo(event.target.value);
-  };
-
-  // const onAdd = () => {};
-
-  const handleDelete = (todo: string) => {
-    setToDoList(toDoList.filter((item) => item !== todo));
-  };
-
   return (
     <Container>
-      <DataView toDoList={toDoList} onDelete={handleDelete} />
-      <TextInput value={toDo} onChange={handleClick} />
-      <Button label="추가" color="#304FFE" />
+      <ToDoListContextProvider>
+        <DataView />
+        <TextInput />
+        <Button label="추가" color="#304FFE" />
+      </ToDoListContextProvider>
     </Container>
   );
 }
