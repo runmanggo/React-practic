@@ -33,6 +33,7 @@ function App() {
         });
       }
       setMovies(loadedMovies);
+      
     } catch (error) {
       setError(error.message);
     }
