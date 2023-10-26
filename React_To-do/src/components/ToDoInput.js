@@ -3,6 +3,7 @@ import classes from "./ToDoInput.module.css";
 
 const ToDoInput = (props) => {
   const [input, setInPut] = useState("");
+
   const UploadTodo = (event) => {
     event.preventDefault();
     props.onAddTodo(input);
