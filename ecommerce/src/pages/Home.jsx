@@ -17,6 +17,11 @@ import Clock from "../components/UI/Clock";
 const Home = () => {
   const [trandingProducts, setTrandingProducts] = useState([]);
   const [bestSalesProducts, setBestSalesProducts] = useState([]);
+  const [mobileProducts, setMobileProducts] = useState([]);
+  const [wirelessProducts, setWirelessProducts] = useState([]);
+
+  const [popularProducts, setPopularProducts] = useState([]);
+
   const year = new Date().getFullYear();
 
   useEffect(() => {
@@ -28,8 +33,23 @@ const Home = () => {
       (item) => item.category === "sofa"
     );
 
+    const filteredMobileProducts = products.filter(
+      (item) => item.category === "mobile"
+    );
+
+    const filteredWiressProducts = products.filter(
+      (item) => item.category === "wireless"
+    );
+
+    const filteredPopularProducts = products.filter(
+      (item) => item.category === "watch"
+    );
+
     setTrandingProducts(filteredTrandingProducts);
     setBestSalesProducts(filteredBestSalesProducts);
+    setMobileProducts(filteredMobileProducts);
+    setWirelessProducts(filteredWiressProducts);
+    setPopularProducts(filteredPopularProducts);
   }, []);
 
   return (
@@ -60,6 +80,7 @@ const Home = () => {
         </Container>
       </section>
       <Services />
+
       <section className="trending__products">
         <Container>
           <Row>
@@ -70,6 +91,7 @@ const Home = () => {
           </Row>
         </Container>
       </section>
+
       <section className="best__sales">
         <Container>
           <Row>
@@ -84,7 +106,7 @@ const Home = () => {
       <section className="timer__count">
         <Container>
           <Row>
-            <Col lg="6" md="6">
+            <Col lg="6" md="12" className="counter-down-col">
               <div className="clock__top-content">
                 <h4 className="text-white fs-6 mb-2">Limited Offers</h4>
                 <h3 className="text-white fs-5 mb-3">Quality Armchair</h3>
@@ -98,13 +120,35 @@ const Home = () => {
               </motion.button>
             </Col>
 
-            <Col lg="6" md="6" className="text-end">
+            <Col lg="6" md="12" className="text-end counter__img">
               <img src={counterImg} alt="" />
             </Col>
           </Row>
         </Container>
       </section>
-      <section></section>
+
+      <section className="new__arrivals">
+        <Container>
+          <Row>
+            <Col lg="12" className="text-center mb-5">
+              <h2 className="section__title">New Arrivals</h2>
+            </Col>
+            <ProductsList data={mobileProducts} />
+            <ProductsList data={wirelessProducts} />
+          </Row>
+        </Container>
+      </section>
+
+      <section className="popular__catagory">
+        <Container>
+          <Row>
+            <Col lg="12" className="text-center mb-5">
+              <h2 className="section__title">Popular Catagory</h2>
+            </Col>
+            <ProductsList data={popularProducts} />
+          </Row>
+        </Container>
+      </section>
     </Helmet>
   );
 };
